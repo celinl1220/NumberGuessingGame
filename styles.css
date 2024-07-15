@@ -54,7 +54,7 @@ button:hover {
 
 h1 {
 	color: var(--headerText-color);
-	font-size: 2rem;
+	font-size: 4rem;
 	margin: 0;
 }
 
@@ -63,7 +63,7 @@ h1 {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	gap: 10px;
+	gap: 30px;
 }
 
 #game-wrapper {

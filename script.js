@@ -23,8 +23,9 @@ const updateStatus = (color, text) => {
 	}, 100);
 }
 
-const updateButtons = (state) => {
+const updateCheckBtn = (state) => {
 	// console.log(state.text);
+	checkBtn.classList.remove("button-active");
 	checkBtn.textContent = state.text;
 	checkBtn.onclick = state.function;
 	numberInput.onkeydown = (e) => {
@@ -35,7 +36,7 @@ const updateButtons = (state) => {
 	};
 	numberInput.onkeyup = (e) => {
 		if(e.key === "Enter") {
-			checkBtn.classList.toggle("button-active");
+			checkBtn.classList.remove("button-active");
 		}
 	};
 }
@@ -51,7 +52,7 @@ const restartGame = () => {
 	numberInput.focus();
 	// checkBtn.textContent = "Check"
 	updateStatus("white", "");
-	updateButtons(buttonFunctions[0]);
+	updateCheckBtn(buttonFunctions[0]);
 
 	// console.log("answer:", answer);
 
@@ -62,7 +63,7 @@ const restartGame = () => {
 const endGame = () => {
 	// console.log("endgame()");
 	numberInput.disabled = true;
-	updateButtons(buttonFunctions[1]);
+	updateCheckBtn(buttonFunctions[1]);
 	// checkBtn.textContent = "Restart";
 	// checkBtn.addEventListener("click", restartGame);
 }
