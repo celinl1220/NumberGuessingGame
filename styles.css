@@ -67,6 +67,8 @@ h1 {
 }
 
 .vertical-stack {
+	padding-top: 50px;
+	padding-bottom: 50px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
