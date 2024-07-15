@@ -26,11 +26,30 @@ main {
 	margin: 0;
 	min-width: 450px;
 	min-height: 300px;
-	border: 1px solid green; /* for testing purposes */
+	/*border: 1px solid green; /* for testing purposes */
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
+}
+
+button {
+	background-color: var(--buttonBackground-color);
+	color: var(--border-color);
+	text-align: center;
+	border: 1px solid var(--border-color);
+	border-radius: 10%;
+	padding: 10px;
+	margin: 0;
+}
+
+button:hover {
+	cursor: pointer;
+	background: linear-gradient(var(--mainBackground-color), var(--buttonBackground-color));
+}
+
+.button-active, button:active {
+	box-shadow: inset 0 0 10px var(--border-color);
 }
 
 h1 {
@@ -48,6 +67,7 @@ h1 {
 }
 
 #game-wrapper {
+	position: relative;
 	width: 50vw;
 	height: 50vh;
 	min-width: 300px;
@@ -58,6 +78,28 @@ h1 {
 	background-color: var(--mainBackground-color);
 	border-radius: 10%;
 	border: 3px solid var(--border-color);
+}
+
+#game-nav-bar {
+	position: absolute;
+	top: 5%;
+	width: 95%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#home-btn, #restart-btn {
+	width: 40px;
+	height: 40px;
+}
+
+#home-btn {
+	border-top-left-radius: 40%;
+}
+
+#restart-btn {
+	border-top-right-radius: 40%;
 }
 
 #prompt {
@@ -95,26 +137,10 @@ h1 {
 	margin: 0;
 }
 
-button {
+#check-btn, #start-btn {
 	width: 100px;
 	height: 50px;
-	background-color: var(--buttonBackground-color);
-	color: var(--border-color);
 	font-size: 1.3rem;
-	text-align: center;
-	border: 1px solid var(--border-color);
-	border-radius: 10%;
-	padding: 10px;
-	margin: 0;
-}
-
-button:hover {
-	cursor: pointer;
-	background: linear-gradient(var(--mainBackground-color), var(--buttonBackground-color));
-}
-
-.button-active, button:active {
-	box-shadow: inset 0 0 10px var(--border-color);
 }
 
 #chances {

@@ -1,11 +1,15 @@
+const startPageWrapper = document.getElementById("start-page-wrapper");
+const gameTitle = document.getElementById("title");
+const startBtn = document.getElementById("start-btn");
+
+const gameWrapper = document.getElementById("game-wrapper");
 const numberInput = document.getElementById("number-input");
 const checkBtn = document.getElementById("check-btn");
 const hintResult = document.getElementById("hint-result");
 const chancesText = document.getElementById("chances");
-const gameWrapper = document.getElementById("game-wrapper");
-const gameTitle = document.getElementById("title");
-const startBtn = document.getElementById("start-btn");
-const startPageWrapper = document.getElementById("start-page-wrapper");
+
+const homeBtn = document.getElementById("home-btn");
+const restartBtn = document.getElementById("restart-btn");
 
 let answer = Math.floor(Math.random() * 100 + 1);
 let chances = 10;
@@ -19,50 +23,53 @@ const updateStatus = (color, text) => {
 	}, 100);
 }
 
+const updateButtons = (state) => {
+	// console.log(state.text);
+	checkBtn.textContent = state.text;
+	checkBtn.onclick = state.function;
+	numberInput.onkeydown = (e) => {
+		if(e.key === "Enter") {
+			checkBtn.classList.add("button-active");
+			checkBtn.click();
+		}
+	};
+	numberInput.onkeyup = (e) => {
+		if(e.key === "Enter") {
+			checkBtn.classList.toggle("button-active");
+		}
+	};
+}
+
 const restartGame = () => {
+	// console.log("restartGame()");
 	startPageWrapper.style.display = "none";
 	gameWrapper.removeAttribute("style");
 	chances = 10;
 	answer = Math.floor(Math.random() * 100 + 1);
 	numberInput.value = "";
+	numberInput.disabled = false;
 	numberInput.focus();
-	checkBtn.textContent = "Check"
+	// checkBtn.textContent = "Check"
 	updateStatus("white", "");
+	updateButtons(buttonFunctions[0]);
 
-	checkBtn.addEventListener("click", checkInputValid);
+	// console.log("answer:", answer);
 
-	numberInput.addEventListener("keydown", (e) => {
-		if(e.key === "Enter") {
-			checkBtn.classList.add("button-active");
-			checkBtn.click();
-		}
-	});
-
-	numberInput.addEventListener("keyup", (e) => {
-		if(e.key === "Enter") {
-			checkBtn.classList.toggle("button-active");
-		}
-	})
+	homeBtn.addEventListener("click", titlePage);
+	restartBtn.addEventListener("click", restartGame);
 }
 
 const endGame = () => {
-	checkBtn.textContent = "Restart";
-	checkBtn.addEventListener("click", restartGame);
-	numberInput.addEventListener("keydown", (e) => {
-		if(e.key === "Enter") {
-			checkBtn.classList.add("button-active");
-			checkBtn.click();
-		}
-	});
-	numberInput.addEventListener("keyup", (e) => {
-		if(e.key === "Enter") {
-			checkBtn.classList.toggle("button-active");
-		}
-	})
+	// console.log("endgame()");
+	numberInput.disabled = true;
+	updateButtons(buttonFunctions[1]);
+	// checkBtn.textContent = "Restart";
+	// checkBtn.addEventListener("click", restartGame);
 }
 
 const checkInputValid = () => {
 	const guess = parseInt(numberInput.value);
+	// console.log("guessed:", guess);
 	numberInput.value = "";
 	// chancesText.textContent = `ans: ${answer}, guess: ${guess}`;
 	if (guess === answer) {
@@ -90,5 +97,21 @@ const checkInputValid = () => {
 	}
 }
 
-gameWrapper.style.display = "none";
-startBtn.addEventListener("click", restartGame);
+const titlePage = () => {
+	gameWrapper.style.display = "none";
+	startPageWrapper.removeAttribute("style");
+	startBtn.addEventListener("click", restartGame);
+}
+
+const buttonFunctions = [
+	{
+		text: "Check",
+		function: checkInputValid
+	},
+	{
+		text: "Restart",
+		function: restartGame
+	}
+];
+
+titlePage();
