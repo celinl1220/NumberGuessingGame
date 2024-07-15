@@ -13,18 +13,42 @@
 				<h1 id="title">Number Guessing Game</h1>
 				<button id="start-btn">Start</button>
 			</div>
-			<div id="game-wrapper" class="vertical-stack">
-				<span id="game-nav-bar">
-					<button id="home-btn"><i class="fa-solid fa-house"></i></button>
-					<button id="restart-btn"><i class="fa-solid fa-rotate-right"></i></button>
+			<div id="settings-wrapper" class="vertical-stack">
+				<span class="game-nav-bar top-nav">
+					<p></p>
+					<button class="top-right-btn" id="settings-close-btn"><i class="fa-solid fa-xmark"></i></button>
 				</span>
-				<p id="prompt">Guess a number between 1 and 100</p>
+				<h2 id="settings-title">Settings</h2>
+				<span>
+					<label for="chances" class="settings-label" for="chances">chances: </label>
+					<input class="settings-input" id="chances" type="number" />
+				</span>
+				<span>
+					<label for="min" class="settings-label" for="min">minimum: </label>
+					<input class="settings-input" id="min" type="number" />
+				</span>
+				<span>
+					<label for="max" class="settings-label" for="max">maximum: </label>
+					<input class="settings-input" id="max" type="number" />
+				</span>
+				<button id="settings-save-btn">Save and Start New Game</button>
+			</div>
+			<div id="game-wrapper" class="vertical-stack">
+				<span class="game-nav-bar top-nav">
+					<button class="top-left-btn" id="home-btn"><i class="fa-solid fa-house"></i></button>
+					<button class="top-right-btn" id="restart-btn"><i class="fa-solid fa-rotate-right"></i></button>
+				</span>
+				<p id="prompt"></p>
 				<p id="hint-result"></p>
 				<span id="input-wrapper">
 					<input id="number-input" type="number" />
 					<button id="check-btn">Check</button>
 				</span>
-				<p id="chances"></p>
+				<p id="chances-left"></p>
+				<span class="game-nav-bar bottom-nav">
+					<p></p>
+					<button class="bottom-right-btn" id="settings-btn"><i class="fa-solid fa-gear"></i></button>
+				</span>
 			</div>
 		</main>
 		<script src="script.js"></script>
