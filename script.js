@@ -2,10 +2,13 @@ const numberInput = document.getElementById("number-input");
 const checkBtn = document.getElementById("check-btn");
 const hintResult = document.getElementById("hint-result");
 const chancesText = document.getElementById("chances");
+const gameWrapper = document.getElementById("game-wrapper");
+const gameTitle = document.getElementById("title");
+const startBtn = document.getElementById("start-btn");
+const startPageWrapper = document.getElementById("start-page-wrapper");
 
 let answer = Math.floor(Math.random() * 100 + 1);
 let chances = 10;
-numberInput.focus();
 
 const updateStatus = (color, text) => {
 	hintResult.innerHTML = "";
@@ -17,6 +20,8 @@ const updateStatus = (color, text) => {
 }
 
 const restartGame = () => {
+	startPageWrapper.style.display = "none";
+	gameWrapper.removeAttribute("style");
 	chances = 10;
 	answer = Math.floor(Math.random() * 100 + 1);
 	numberInput.value = "";
@@ -85,4 +90,5 @@ const checkInputValid = () => {
 	}
 }
 
-restartGame();
+gameWrapper.style.display = "none";
+startBtn.addEventListener("click", restartGame);
